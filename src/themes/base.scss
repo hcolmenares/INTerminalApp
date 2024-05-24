@@ -1,0 +1,72 @@
+@import "./variables.scss";
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Courier New", Courier, monospace; /* Fuente tipográfica */
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 2rem 1rem;
+  font-size: 2rem;
+  background: $secondary;
+  color: $primary;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+a {
+  text-decoration: none;
+  color: $primary;
+}
+
+a:hover {
+  color: $dark-primary;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+p,
+a {
+  margin: 0;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+p {
+  font-size: 1.4rem;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}

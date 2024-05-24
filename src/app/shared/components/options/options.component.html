@@ -1,0 +1,10 @@
+<ul id="options" *ngIf="options.length > 0">
+  <li
+    class="option"
+    *ngFor="let option of options; let i = index"
+    [ngClass]=" i !== 0 && isDisable ? 'disabled' : '' "
+    (click)="navigateTo(option.router)"
+  >
+    {{ option.option }}
+  </li>
+</ul>

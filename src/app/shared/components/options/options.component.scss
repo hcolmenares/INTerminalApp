@@ -1,0 +1,22 @@
+@import "../../../../themes/variables.scss";
+
+.option {
+  transition: 0.3s ease-in-out;
+  padding: 0.5rem;
+
+  &:hover {
+    font-weight: 600;
+    background: $primary;
+    color: $secondary;
+    cursor: pointer;
+  }
+
+  &.disabled {
+    color: $dark-primary;
+
+    &:hover {
+      background: $dark-primary;
+      color: $secondary;
+    }
+  }
+}
