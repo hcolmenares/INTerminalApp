@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { OptionText } from '../../../interfaces/option-text.interface';
-import { UtilsService } from '../../../services/utils.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Option } from '../../../interfaces/StoryNode.interface';
+import { TerminalService } from '../../../services/terminal.service';
 
 @Component({
   selector: 'shared-options',
@@ -9,16 +9,17 @@ import { UtilsService } from '../../../services/utils.service';
 })
 
 export class OptionsComponent implements OnInit {
-  @Input() options: OptionText[] = [];
+  @Input() options: Option[] = [];
   @Input() isDisable: boolean = false;
+  @Output() changeOptions: EventEmitter<boolean> = new EventEmitter(false);
 
-  comeBackOption:OptionText = {
-    option: 'Volver',
-    router: ''
+  comeBackOption:Option = {
+    text: 'Volver',
+    nextId: 0
   }
 
   constructor(
-    private utils : UtilsService
+    private terminal : TerminalService
   ) {}
 
   ngOnInit(): void {
@@ -26,14 +27,14 @@ export class OptionsComponent implements OnInit {
   }
 
   initOptions():void {
-    const existOption = this.options.filter( option => option.option === this.comeBackOption.option);
+    const existOption = this.options.filter( option => option.text === this.comeBackOption.text);
     if(existOption.length >= 1) return;
     this.options.push(this.comeBackOption);
   }
 
-  navigateTo(url: string | undefined):void {
-    if(url === undefined) return;
-    this.utils.gotTo(url);
+  navigateTo(nextNode: number = 0):void {
+    this.terminal.goToNextNode(nextNode);
+    this.changeOptions.emit(true);
   }
 
 }

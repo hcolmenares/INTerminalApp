@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Message } from '../../../interfaces/message.interface';
 
 @Component({
   selector: 'shared-message',
@@ -8,5 +7,5 @@ import { Message } from '../../../interfaces/message.interface';
 })
 
 export class MessageComponent {
-  @Input() message: Message = { content: '' };
+  @Input() message: string = '';
 }

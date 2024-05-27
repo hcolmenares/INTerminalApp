@@ -1,28 +1,18 @@
 import { Injectable } from '@angular/core';
 import { GameData } from '../interfaces/game-data.interface';
-import { OptionText } from '../interfaces/option-text.interface';
-import { Message } from '../interfaces/message.interface';
 import { Player } from '../interfaces/player.interface';
+import { StoryNode } from '../interfaces/StoryNode.interface';
+import { STORY_NODES } from '../../assets/story-data';
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class TerminalService {
+  private _currentNodeId: number = 1;
+
   newGame: string = '{}';
   existCacheStorage?: GameData | string;
-
-  initialMessage: Message = {
-    content: '¡Bienvenido al terminal de novelas interactivas!',
-  };
-
-  initialOptions: OptionText[] = [
-    { option: 'Nueva Partida', router: 'terminal' },
-    { option: 'Continuar' },
-    { option: 'Cargar' },
-  ];
-
-  yesNoOptions: OptionText[] = [{ option: 'Si' }, { option: 'No' }];
 
   constructor() {}
 
@@ -58,5 +48,13 @@ export class TerminalService {
   savePlayerProgress(data: Player) {
     const newStorage = JSON.stringify(data);
     localStorage.setItem('playerData', newStorage);
+  }
+
+  getCurrentNode(): StoryNode {
+    return STORY_NODES.find(node => node.id === this._currentNodeId) || STORY_NODES[0];
+  }
+
+  goToNextNode(nextId: number) {
+    this._currentNodeId = nextId;
   }
 }

@@ -1,6 +1,7 @@
 <shared-message [message]="menuMessage"></shared-message>
 
 <shared-options
+  (changeOptions)="onMenuChange($event)"
   [options]="menuOptions"
   [isDisable]="existGameData"
 ></shared-options>
