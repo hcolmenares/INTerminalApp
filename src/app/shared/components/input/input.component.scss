@@ -1,9 +1,31 @@
+@import "../../../../themes/variables.scss";
 
-#player-name {
+.shared-input {
   width: 100%;
+  height: 3rem;
+  margin-top: 2rem;
+  font-size: 2rem;
   padding: 0.5rem;
+  font-weight: 600;
   border: none;
   outline: none;
-  background: var(--black);
-  color: var(--primary);
+  background: $secondary;
+  color: $primary;
+}
+
+.after-input {
+  margin-top: 2rem;
+  font-size: 1.6rem;
+  letter-spacing: 0.3rem;
+  font-style: italic;
+  animation-name: tickingAnimation;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+ /* The animation code */
+ @keyframes tickingAnimation {
+  0%   {color: $primary;}
+  50%  {color: $dark-primary;}
+  100% {color: $primary;}
 }

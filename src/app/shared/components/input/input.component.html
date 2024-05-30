@@ -1,1 +1,8 @@
-<p>input works!</p>
+<input type="text" class="shared-input" (keyup)="getInputValue($event)" #sharedInput>
+
+<span
+  *ngIf="isValueOnInput"
+  class="after-input"
+>
+  {{ spanMessage }}
+</span>

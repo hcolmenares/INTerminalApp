@@ -11,7 +11,7 @@ import { TerminalService } from '../../../services/terminal.service';
 export class OptionsComponent implements OnInit {
   @Input() options: Option[] = [];
   @Input() isDisable: boolean = false;
-  @Output() changeOptions: EventEmitter<boolean> = new EventEmitter(false);
+  @Output() changeOptions: EventEmitter<number> = new EventEmitter();
 
   comeBackOption:Option = {
     text: 'Volver',
@@ -22,19 +22,10 @@ export class OptionsComponent implements OnInit {
     private terminal : TerminalService
   ) {}
 
-  ngOnInit(): void {
-    this.initOptions();
-  }
-
-  initOptions():void {
-    const existOption = this.options.filter( option => option.text === this.comeBackOption.text);
-    if(existOption.length >= 1) return;
-    this.options.push(this.comeBackOption);
-  }
+  ngOnInit(): void { }
 
   navigateTo(nextNode: number = 0):void {
-    this.terminal.goToNextNode(nextNode);
-    this.changeOptions.emit(true);
+    this.changeOptions.emit(nextNode);
   }
 
 }

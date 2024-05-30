@@ -1,7 +1,12 @@
 <shared-message [message]="menuMessage"></shared-message>
 
+<shared-input
+  *ngIf="showInput"
+  (inputValue)="onInputValue($event)"
+></shared-input>
+
 <shared-options
+  *ngIf="!showInput"
   (changeOptions)="onMenuChange($event)"
   [options]="menuOptions"
-  [isDisable]="existGameData"
 ></shared-options>

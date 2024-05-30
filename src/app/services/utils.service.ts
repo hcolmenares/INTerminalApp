@@ -14,4 +14,11 @@ export class UtilsService {
   gotTo(url: string):void {
     this.router.navigateByUrl(url);
   }
+
+
+  isObjectEmpty(objectRef: object): boolean {
+    return (
+      Object.keys(objectRef).length === 0 && objectRef.constructor === Object
+    );
+  }
 }
